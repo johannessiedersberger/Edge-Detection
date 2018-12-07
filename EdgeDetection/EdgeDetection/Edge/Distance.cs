@@ -33,5 +33,28 @@ namespace EdgeDetection.Edge
 
       return lineValues;
     }
+
+    public unsafe static void Distances(this int[] pixelLineValues)
+    {
+      int threshold = 50;
+
+      var positionsOverThreshold = new List<List<int>>();
+      positionsOverThreshold.Add(new List<int>());
+
+      int currentListIndex = 0;
+      for (int i = 0; i < pixelLineValues.Length; i++)
+      {
+        if(pixelLineValues[i] > threshold)
+        {
+          if(positionsOverThreshold[currentListIndex].Last() - pixelLineValues[i] > -1)
+          {
+            currentListIndex++;
+            positionsOverThreshold.Add(new List<int>());
+          }
+        }
+      }
+
+
+    }
   }
 }

@@ -14,6 +14,7 @@ namespace EdgeDetection.Edge
     public EdgeViewModel()
     {
       int[] image = Image.FromFile(@"C:\Users\jsiedersberger\Pictures\Camera Roll\001.jpg").Edge().LineValues(300);
+      image.Distances();
     }
     
     private Image _image;
