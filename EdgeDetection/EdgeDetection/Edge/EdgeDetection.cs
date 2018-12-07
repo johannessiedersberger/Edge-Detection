@@ -15,7 +15,6 @@ namespace EdgeDetection.Edge
 
       var result = new Image(size);
 
-
       result.Initialize(0);
 
       var startImage = image.Planes[0].GetLinearAccess<byte>();
@@ -53,12 +52,9 @@ namespace EdgeDetection.Edge
 
             *(endImageLine + x * endImageXInc) = (byte)(Math.Abs(acc / 3));
           }
-
         }
         return result;
       }
-
-
     }
   }
 }

@@ -83,6 +83,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Edge\Distance.cs" />
     <Compile Include="Edge\EdgeDetection.cs" />
     <Compile Include="Edge\EdgeView.xaml.cs">
       <DependentUpon>EdgeView.xaml</DependentUpon>

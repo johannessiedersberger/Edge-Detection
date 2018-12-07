@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Caliburn.Micro;
 using Stemmer.Cvb;
+using Stemmer.Cvb.Wpf;
 
 namespace EdgeDetection.Edge
 {
@@ -12,9 +13,9 @@ namespace EdgeDetection.Edge
   {
     public EdgeViewModel()
     {
-      Image = Image.FromFile(@"C:\Users\jsiedersberger\Pictures\Camera Roll\001.jpg").Edge();
+      int[] image = Image.FromFile(@"C:\Users\jsiedersberger\Pictures\Camera Roll\001.jpg").Edge().LineValues(300);
     }
-
+    
     private Image _image;
     public Image Image
     {
