@@ -34,12 +34,39 @@ namespace EdgeDetection.Edge
       return lineValues;
     }
 
-    public unsafe static void Distances(this int[] pixelLineValues)
+    public static List<int> Distances(this List<List<int>> edges)
+    {
+      List<int> edgePositions = new List<int>();
+      foreach(var list in edges)
+      {
+        edgePositions.Add(Middle(list));
+      }
+      List<int> distances = new List<int>();
+      for (int i = 0; i < edgePositions.Count(); i++)
+      {
+        if (i == 0)
+        {
+          distances.Add(edgePositions[i]-0);
+        }
+        else
+        {
+          distances.Add(edgePositions[i] - edgePositions[i-1]);
+        }
+      }
+      return distances;
+    }
+
+    private static int Middle(List<int> positions)
+    {
+      return positions[positions.Count / 2];
+    }
+
+    public unsafe static List<List<int>> Edges(this int[] pixelLineValues)
     {
       int threshold = 50;
 
-      var positionsOverThreshold = new List<Dictionary<int,int>>();
-      positionsOverThreshold.Add(new Dictionary<int,int>());
+      var positionsOverThreshold = new List<List<int>>();
+      positionsOverThreshold.Add(new List<int>());
 
       int currentListIndex = 0;
       for (int i = 0; i < pixelLineValues.Length; i++)
@@ -47,18 +74,18 @@ namespace EdgeDetection.Edge
         if(IsOverThreshold(pixelLineValues[i], threshold))
         {
           if (positionsOverThreshold[positionsOverThreshold.Count() - 1].Count() != 0 &&
-            NewEdge(lastIndex: positionsOverThreshold[positionsOverThreshold.Count()-1].Last().Key, newIndex: i))
+            NewEdge(lastIndex: positionsOverThreshold[positionsOverThreshold.Count()-1].Last(), newIndex: i))
           {
-            currentListIndex++;
-            positionsOverThreshold.Add(new Dictionary<int, int>());
-            positionsOverThreshold[currentListIndex].Add(i, pixelLineValues[i]);
+            positionsOverThreshold.Add(new List<int>());
+            positionsOverThreshold[++currentListIndex].Add(i);
           }
           else
           {
-            positionsOverThreshold[currentListIndex].Add(i, pixelLineValues[i]);
+            positionsOverThreshold[currentListIndex].Add(i);
           }
         }
       }
+      return positionsOverThreshold;
     }
 
     private static bool IsOverThreshold(int valueToCheck, int threshold)
