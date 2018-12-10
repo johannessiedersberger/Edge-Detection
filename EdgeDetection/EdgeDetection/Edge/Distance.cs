@@ -38,23 +38,37 @@ namespace EdgeDetection.Edge
     {
       int threshold = 50;
 
-      var positionsOverThreshold = new List<List<int>>();
-      positionsOverThreshold.Add(new List<int>());
+      var positionsOverThreshold = new List<Dictionary<int,int>>();
+      positionsOverThreshold.Add(new Dictionary<int,int>());
 
       int currentListIndex = 0;
       for (int i = 0; i < pixelLineValues.Length; i++)
       {
-        if(pixelLineValues[i] > threshold)
+        if(IsOverThreshold(pixelLineValues[i], threshold))
         {
-          if(positionsOverThreshold[currentListIndex].Last() - pixelLineValues[i] > -1)
+          if (positionsOverThreshold[positionsOverThreshold.Count() - 1].Count() != 0 &&
+            NewEdge(lastIndex: positionsOverThreshold[positionsOverThreshold.Count()-1].Last().Key, newIndex: i))
           {
             currentListIndex++;
-            positionsOverThreshold.Add(new List<int>());
+            positionsOverThreshold.Add(new Dictionary<int, int>());
+            positionsOverThreshold[currentListIndex].Add(i, pixelLineValues[i]);
+          }
+          else
+          {
+            positionsOverThreshold[currentListIndex].Add(i, pixelLineValues[i]);
           }
         }
       }
+    }
 
+    private static bool IsOverThreshold(int valueToCheck, int threshold)
+    {
+      return valueToCheck > threshold;
+    }
 
+    private static bool NewEdge(int lastIndex, int newIndex)
+    {
+      return newIndex - lastIndex != 1;
     }
   }
 }
