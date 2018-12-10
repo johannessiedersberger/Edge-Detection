@@ -89,6 +89,7 @@
       <DependentUpon>EdgeView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Edge\EdgeViewModel.cs" />
+    <Compile Include="Edge\PixelDistanceView.cs" />
     <Compile Include="HelloBootstrapper.cs" />
     <Page Include="Edge\EdgeView.xaml">
       <SubType>Designer</SubType>
@@ -100,6 +101,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Edge\HistogrammControl.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

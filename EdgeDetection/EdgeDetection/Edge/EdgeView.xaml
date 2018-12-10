@@ -6,8 +6,18 @@
              xmlns:local="clr-namespace:EdgeDetection.Edge"
              mc:Ignorable="d" 
                xmlns:cvb="http://www.commonvisionblox.com/wpf"
+             xmlns:local1="clr-namespace:EdgeDetection"
              d:DesignHeight="450" d:DesignWidth="800" MaxHeight="1000">
   <Grid>
-    <cvb:Display Image="{Binding Image}"/>
+
+    <cvb:Display Image="{Binding Image}" >
+    </cvb:Display>
+
+    <local:HistogrammControl Data="{Binding LinePixelValues}" Grid.Row="1"
+                             BorderBrush="Black" BorderThickness="1" Background="#0FFFFFFF"
+                             Height="200" Width="400" 
+                             HorizontalAlignment="Right" VerticalAlignment="Bottom" 
+                             Margin="40"/>
+    
   </Grid>
 </UserControl>
