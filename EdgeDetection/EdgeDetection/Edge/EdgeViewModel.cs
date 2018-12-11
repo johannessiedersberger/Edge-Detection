@@ -19,15 +19,11 @@ namespace EdgeDetection.Edge
       int[] image = img.Edge().LineValues(300);
       var distances = image.Edges().Distances();
       LinePixelValues = new int[][] { image };
-      Distances = new ObservableCollection<PixelDistanceView>();
-      foreach (int d in distances)
-        Distances.Add(new PixelDistanceView() { Distance = d });
-   
+      Distances = distances;
+
     }
-
-
-    private ObservableCollection<PixelDistanceView> _distances;
-    public ObservableCollection<PixelDistanceView> Distances
+    private List<int> _distances;
+    public List<int> Distances
     {
       get
       {
@@ -39,6 +35,8 @@ namespace EdgeDetection.Edge
         NotifyOfPropertyChange(() => Distances);
       }
     }
+
+    
     
     private int[][] _lineData;
 

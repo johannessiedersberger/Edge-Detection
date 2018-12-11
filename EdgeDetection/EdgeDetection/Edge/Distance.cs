@@ -66,6 +66,7 @@ namespace EdgeDetection.Edge
       int threshold = 50;
 
       var positionsOverThreshold = new List<List<int>>();
+
       positionsOverThreshold.Add(new List<int>());
 
       int currentListIndex = 0;
