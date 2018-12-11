@@ -13,13 +13,14 @@
     <cvb:Display Image="{Binding Image}" >
     </cvb:Display>
 
-    <StackPanel>
+    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom">
       <local:HistogrammControl Data="{Binding LinePixelValues}" Grid.Row="1"
                              BorderBrush="Black" BorderThickness="1" Background="#0FFFFFFF"
+                             HorizontalAlignment="Right"
                              Height="200" Width="400" 
                              
                              Margin="40"/>
-      <ListBox Margin="20" ItemsSource="{Binding Distances}" Height="60" Width="100" >
+      <ListBox Margin="20" ItemsSource="{Binding Distances}" Height="200" Width="100" HorizontalAlignment="Left">
         <ListBox.ItemTemplate>
           <DataTemplate>
             <StackPanel Orientation="Horizontal">
