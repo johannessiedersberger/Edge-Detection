@@ -7,20 +7,22 @@
              mc:Ignorable="d" 
                xmlns:cvb="http://www.commonvisionblox.com/wpf"
              xmlns:local1="clr-namespace:EdgeDetection"
-             d:DesignHeight="450" d:DesignWidth="800" MaxHeight="1000">
+             d:DesignHeight="450" d:DesignWidth="800" MaxHeight="1000"
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             xmlns:cal="http://www.caliburnproject.org">
   <Grid>
 
     <cvb:Display Image="{Binding Image}" >
     </cvb:Display>
 
-    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="40">
       <local:HistogrammControl Data="{Binding LinePixelValues}" Grid.Row="1"
                              BorderBrush="Black" BorderThickness="1" Background="#0FFFFFFF"
                              HorizontalAlignment="Right"
                              Height="200" Width="400" 
                              
-                             Margin="40"/>
-      <ListBox Margin="20" ItemsSource="{Binding Distances}" Height="200" Width="100" HorizontalAlignment="Left">
+                             />
+      <ListBox  ItemsSource="{Binding Distances}" Height="200" Width="100" HorizontalAlignment="Left">
         <ListBox.ItemTemplate>
           <DataTemplate>
             <StackPanel Orientation="Horizontal">
@@ -30,7 +32,17 @@
         </ListBox.ItemTemplate>
       </ListBox>
     </StackPanel>
-    
+
+    <StackPanel HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="40">
+      <TextBox Text="{Binding SelectedLine}"/>
+      <Button Content="Calculate Distances">
+        <i:Interaction.Triggers>
+          <i:EventTrigger EventName="Click">
+            <cal:ActionMessage MethodName="CalculateDistanceButtonClicked" />
+          </i:EventTrigger>
+        </i:Interaction.Triggers>
+      </Button>
+    </StackPanel>
 
   </Grid>
 </UserControl>

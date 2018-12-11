@@ -9,7 +9,7 @@ namespace EdgeDetection.Edge
 {
   public static class EdgeDetection
   {
-    public static Image Edge(this Image image)
+    public static Image KernelEdge(this Image image)
     {
       var size = image.Size;
 

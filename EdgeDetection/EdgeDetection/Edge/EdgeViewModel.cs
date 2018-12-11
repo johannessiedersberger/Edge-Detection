@@ -14,14 +14,37 @@ namespace EdgeDetection.Edge
   {
     public EdgeViewModel()
     {
-      Image img = Image.FromFile(@"C:\Users\jsiedersberger\Pictures\Camera Roll\001.jpg");
-      Image = img;
-      int[] image = img.Edge().LineValues(300);
-      var distances = image.Edges().Distances();
-      LinePixelValues = new int[][] { image };
-      Distances = distances;
-
+      Image = Image.FromFile(@"C:\Users\jsiedersberger\Pictures\Camera Roll\001.jpg");
+      SetUIControls();
     }
+
+    private void SetUIControls()
+    {
+      int[] imageLine = Image.KernelEdge().LineValues(SelectedLine);
+      LinePixelValues = new int[][] { imageLine };
+      Distances = imageLine.Edges().Distances();
+    }
+
+
+    public void CalculateDistanceButtonClicked()
+    {
+      SetUIControls();
+    }
+
+    private int _selectedLine = 300;
+    public int SelectedLine
+    {
+      get
+      {
+        return _selectedLine;
+      }
+      set
+      {
+        _selectedLine = value;
+        NotifyOfPropertyChange(() => SelectedLine);
+      }
+    }
+
     private List<int> _distances;
     public List<int> Distances
     {
@@ -34,12 +57,9 @@ namespace EdgeDetection.Edge
         _distances = value;
         NotifyOfPropertyChange(() => Distances);
       }
-    }
-
-    
+    } 
     
     private int[][] _lineData;
-
     public int[][] LinePixelValues
     {
       get
