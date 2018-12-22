@@ -18,5 +18,5 @@ This is the line that we selected to calculate the distances between the edges <
 Here i applied the algorithm that makes the edges visible
 ![EndImage](http://johannessiedersberger.com/edge_detection_end_image)
 ### Distances Box
-The calculated distances are shown here
+The calculated distances are shown here <br />
 ![DistanceBox](http://johannessiedersberger.com/distances/)
