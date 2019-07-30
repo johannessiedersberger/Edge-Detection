@@ -16,4 +16,3 @@ Here i applied the algorithm that makes the edges visible
 ![Edge_Detection_End_Image](https://user-images.githubusercontent.com/36839962/62157137-c5249800-b30c-11e9-8e3a-61a02eae804b.PNG)
 ### Distances Box
 The calculated distances are shown here <br />
-![DistanceBox](http://johannessiedersberger.com/distances/)
