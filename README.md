@@ -2,8 +2,12 @@
 This application is used for calculating the distances between all edges in a certain row
 # Features
 - Distance Calculation: Counting every pixel between an Edge in a ceartain row. An Edge is recognizable because of its higher grey-scale values.
-- Diagramm: This diagramm shows the grey-scale values (0-255) of the selected line
+- Diagramm: The diagramm shows the grey-scale values (0-255) of the selected line
 - Distances Box: The calculated distances are shown in the box 
+# Build With
+- [.Net Framework](https://python.org)
+- [Visual Studio 2019](https://visualstudio.microsoft.com/)
+- [Common Vision Blox](https://www.stemmer-imaging.com/de-de/produkte/kategorie/common-vision-blox-das-werkzeug-der-bildverarbeiter/) as a library for image-processing 
 # Start Image
 ![Edge_Detection_Start_Image](https://user-images.githubusercontent.com/36839962/62157090-af16d780-b30c-11e9-8073-f6f11a1d3abf.PNG)
 
